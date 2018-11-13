@@ -1,9 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Web;
+using System.Web.Http.Results;
 using System.Web.Mvc;
 using Epam.AzureWorkShop.Labs.Models;
+using Epam.AzureWorkShop.Labs.ViewModels;
 
 namespace Epam.AzureWorkShop.Labs.Controllers
 {
@@ -18,9 +22,45 @@ namespace Epam.AzureWorkShop.Labs.Controllers
 
 		public ActionResult Index()
 		{
-			_noteModels.GetAll();
+			ViewBag.Notes = _noteModels.GetAll();
+			
+			 return View();
+		}
+		
+		[HttpGet]
+		[ChildActionOnly]
+		public ActionResult Add()
+		{
+			return View("AddNote") ;
+		}
+		
+		[HttpPost]
+		public ActionResult AddPost(NoteCreateVM note)
+		{
+			if (!ModelState.IsValid)
+			{
+				ViewBag.Notes = _noteModels.GetAll();
+				
+				return View("Index", note);
+			}
 
-			return View(_noteModels);
+			ReadImage(note);
+			_noteModels.Add(note);
+			return RedirectToAction("index");
+		}
+
+		private void ReadImage(NoteCreateVM note)
+		{
+			if (Request.Files["ImageData"] != null)
+			{
+				using (var memory = new BinaryReader(Request.Files["ImageData"].InputStream))
+				{
+					var data = memory.ReadBytes((int) Request.Files["ImageData"].InputStream.Length);
+
+					note.ImageData = data;
+					note.MimeTypeImage = Request.ContentType;
+				}
+			}
 		}
 
 		public ActionResult About()
