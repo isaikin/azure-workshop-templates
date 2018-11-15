@@ -31,6 +31,7 @@ namespace Epam.AzureWorkShop.Labs
 		{
 			kernel.Bind<IRepository<UserCredentials>>().To<UserRepository>().InSingletonScope();
 			kernel.Bind<IRepository<ImageMetadata>>().To<MetadataRepository>().InSingletonScope();
+			kernel.Bind<IRepository<Note>>().To<NotesRepository>().InSingletonScope();
 			
 			kernel.Bind<IImageModels>().To<ImageModels>();
 			kernel.Bind<INoteModels>().To<NoteModels>();
