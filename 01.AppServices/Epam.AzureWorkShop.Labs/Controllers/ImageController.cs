@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Web.Mvc;
 using Epam.AzureWorkShop.Labs.Models;
+using Epam.AzureWorkShop.Labs.Models.Interfaces;
 
 namespace Epam.AzureWorkShop.Labs.Controllers
 {

@@ -8,6 +8,8 @@ using System.Web.Optimization;
 using System.Web.Routing;
 using Epam.AzureWorkShop.Entities;
 using Epam.AzureWorkShop.Labs.Models;
+using Epam.AzureWorkShop.Labs.Models.Interfaces;
+using Epam.AzureWorkShop.Labs.Models.Repositories;
 using Ninject;
 
 namespace Epam.AzureWorkShop.Labs
@@ -30,8 +32,8 @@ namespace Epam.AzureWorkShop.Labs
 
 		private void Registration(IKernel kernel)
 		{
-			kernel.Bind<IFakeRepo<Note>>().To<FakeRepo<Note>>().InSingletonScope();
-			kernel.Bind<IFakeRepo<Image>>().To<FakeRepo<Image>>().InSingletonScope();
+			kernel.Bind<IRepository<Note>>().To<FakeRepository<Note>>().InSingletonScope();
+			kernel.Bind<IRepository<Image>>().To<FakeRepository<Image>>().InSingletonScope();
 			kernel.Bind<IImageModels>().To<ImageModels>();
 			kernel.Bind<INoteModels>().To<NoteModels>();
 		}

@@ -3,15 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using Epam.AzureWorkShop.Entities;
+using Epam.AzureWorkShop.Labs.Models.Interfaces;
 using Epam.AzureWorkShop.Labs.ViewModels;
 
 namespace Epam.AzureWorkShop.Labs.Models
 {
 	public class ImageModels : IImageModels
 	{
-		private readonly IFakeRepo<Image> _images;
+		private readonly IRepository<Image> _images;
 
-		public ImageModels(IFakeRepo<Image> images)
+		public ImageModels(IRepository<Image> images)
 		{
 			_images = images;
 		}

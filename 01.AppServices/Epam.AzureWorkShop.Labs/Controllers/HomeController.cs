@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.Http.Results;
 using System.Web.Mvc;
 using Epam.AzureWorkShop.Labs.Models;
+using Epam.AzureWorkShop.Labs.Models.Interfaces;
 using Epam.AzureWorkShop.Labs.ViewModels;
 
 namespace Epam.AzureWorkShop.Labs.Controllers
