@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using Epam.AzureWorkShop.Dal.Interfaces;
 using Epam.AzureWorkShop.Entities;
 using Epam.AzureWorkShop.Labs.Models.Interfaces;
 using Epam.AzureWorkShop.Labs.ViewModels;
@@ -17,7 +18,7 @@ namespace Epam.AzureWorkShop.Labs.Models
 			_images = images;
 		}
 
-		public Guid Add(ImageCreateVM image)
+		public Image Add(ImageCreateVM image)
 		{
 			var currentImage = new Image()
 			{
@@ -28,9 +29,9 @@ namespace Epam.AzureWorkShop.Labs.Models
 			return _images.Add(currentImage);
 		}
 
-		public bool Delete(Guid id)
+		public void Delete(Guid id)
 		{
-			return _images.Delete(id);
+			_images.Delete(id);
 		}
 
 		public IEnumerable<ImageVM> GetAll()

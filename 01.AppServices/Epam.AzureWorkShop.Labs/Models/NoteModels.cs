@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using Epam.AzureWorkShop.Dal.Interfaces;
 using Epam.AzureWorkShop.Entities;
 using Epam.AzureWorkShop.Labs.Models.Interfaces;
 using Epam.AzureWorkShop.Labs.ViewModels;
@@ -19,7 +20,7 @@ namespace Epam.AzureWorkShop.Labs.Models
 			_images = images;
 		}
 
-		public Guid Add(NoteCreateVM note)
+		public Note Add(NoteCreateVM note)
 		{
 			var currentImage = new Image()
 			{
@@ -32,13 +33,13 @@ namespace Epam.AzureWorkShop.Labs.Models
 			var currentNote = new Note()
 			{
 				Text = note.Text,
-				ImageId = idImage,
+				ImageId = idImage.Id
 			};
 
 			return _notes.Add(currentNote);
 		}
 
-		public bool Delete(Guid id)
+		public void Delete(Guid id)
 		{
 			var idImage = _notes.GetById(id)?.ImageId;
 
@@ -46,8 +47,6 @@ namespace Epam.AzureWorkShop.Labs.Models
 			{
 				_images.Delete(idImage.Value);
 			}
-
-			return _notes.Delete(id);
 		}
 
 		public IEnumerable<NoteVM> GetAll()

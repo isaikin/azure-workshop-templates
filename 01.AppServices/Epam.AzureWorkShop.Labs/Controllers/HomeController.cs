@@ -28,13 +28,6 @@ namespace Epam.AzureWorkShop.Labs.Controllers
 			 return View();
 		}
 		
-		[HttpGet]
-		[ChildActionOnly]
-		public ActionResult Add()
-		{
-			return View("AddNote") ;
-		}
-		
 		[HttpPost]
 		public ActionResult AddPost(NoteCreateVM note)
 		{
