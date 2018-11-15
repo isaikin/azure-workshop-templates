@@ -11,11 +11,20 @@ namespace Epam.AzureWorkShop.Dal
         {
             Database.Connection.ConnectionString =  ConfigurationManager.ConnectionStrings["SqlDatabase"].ConnectionString;
             
-            Database.SetInitializer(new DropCreateDatabaseAlways<SqlContext>());
+            Database.SetInitializer(new DropCreateDatabaseIfModelChanges<SqlContext>());
         }
 
         public DbSet<ImageMetadata> Metadata { get; set; }
         
         public DbSet<UserCredentials> Users { get; set; }
+        
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<ImageMetadata>()
+                        .HasKey(p => p.ImageId);
+
+            modelBuilder.Entity<UserCredentials>()
+                        .HasKey(p => p.Id);
+        }
     }
 }

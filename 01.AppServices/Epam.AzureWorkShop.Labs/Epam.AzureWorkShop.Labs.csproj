@@ -197,13 +197,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\ImageModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
-    <Compile Include="Models\Interfaces\IImageModels.cs" />
-    <Compile Include="Models\Interfaces\INoteModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\NoteModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\ImageCreateVM.cs" />
@@ -220,7 +216,6 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <None Include="ApplicationInsights.config" />
     <None Include="Properties\PublishProfiles\EpamAzureWorkShopLabs20181113124648 - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -285,6 +280,10 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Epam.AzureWorkShop.Bll\Epam.AzureWorkShop.Bll.csproj">
+      <Project>{f43018e0-93eb-4ce8-a8a1-0378ebe08216}</Project>
+      <Name>Epam.AzureWorkShop.Bll</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Epam.AzureWorkShop.Dal\Epam.AzureWorkShop.Dal.csproj">
       <Project>{4bd79892-c2a7-417d-aaf7-8aedb24c49c7}</Project>
       <Name>Epam.AzureWorkShop.Dal</Name>

@@ -10,7 +10,6 @@ namespace Epam.AzureWorkShop.Dal.Implementations
     {
         public ImageMetadata Add(ImageMetadata item)
         {
-            item.ImageId = Guid.NewGuid();
             using (var context = new SqlContext())
             {
                 context.Metadata.Add(item);

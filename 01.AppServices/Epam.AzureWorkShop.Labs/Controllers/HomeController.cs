@@ -1,60 +1,65 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Net;
-using System.Web;
-using System.Web.Http.Results;
+﻿using System.IO;
 using System.Web.Mvc;
-using Epam.AzureWorkShop.Labs.Models;
-using Epam.AzureWorkShop.Labs.Models.Interfaces;
+using Epam.AzureWorkShop.Bll.Interfaces;
+using Epam.AzureWorkShop.Entities;
 using Epam.AzureWorkShop.Labs.ViewModels;
 
 namespace Epam.AzureWorkShop.Labs.Controllers
 {
 	public class HomeController : Controller
 	{
-		private readonly INoteModels _noteModels;
+		private readonly INoteLogic _noteLogic;
 
-		public HomeController(INoteModels noteModels)
+		public HomeController(INoteLogic noteLogic)
 		{
-			_noteModels = noteModels;
+			_noteLogic = noteLogic;
 		}
 
 		public ActionResult Index()
 		{
-			ViewBag.Notes = _noteModels.GetAll();
+			ViewBag.Notes = _noteLogic.GetAll();
 			
 			 return View();
 		}
 		
 		[HttpPost]
-		public ActionResult AddPost(NoteCreateVM note)
+		public ActionResult AddPost(NoteCreateVM noteVm)
 		{
 			if (!ModelState.IsValid)
 			{
-				ViewBag.Notes = _noteModels.GetAll();
+				ViewBag.Notes = _noteLogic.GetAll();
 				
-				return View("Index", note);
+				return View("Index", noteVm);
 			}
 
-			ReadImage(note);
-			_noteModels.Add(note);
+			var image = ReadImage();
+			var note = new Note
+			{
+				Text = noteVm.Text
+			};
+
+			_noteLogic.Add(note, image);
 			return RedirectToAction("index");
 		}
 
-		private void ReadImage(NoteCreateVM note)
+		private Image ReadImage()
 		{
 			if (Request.Files["ImageData"] != null)
 			{
 				using (var memory = new BinaryReader(Request.Files["ImageData"].InputStream))
 				{
 					var data = memory.ReadBytes((int) Request.Files["ImageData"].InputStream.Length);
-
-					note.ImageData = data;
-					note.MimeTypeImage = Request.ContentType;
+					var fileName = Request.Files["ImageData"].FileName;
+					return new Image
+					{
+						Data = data, 
+						MimeType = Request.ContentType,
+						FileName = fileName
+					};
 				}
 			}
+
+			return null;
 		}
 
 		public ActionResult About()

@@ -10,8 +10,10 @@ namespace Epam.AzureWorkShop.Entities
 
         public Guid UserId { get; set; }
         
+        public Guid NoteId { get; set; }
+        
         public string MimeType { get; set; }
 
-        public string Name { get; set; }
+        public string FileName { get; set; }
     }
 }

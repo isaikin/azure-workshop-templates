@@ -23,6 +23,8 @@ namespace Epam.AzureWorkShop.Dal.Implementations
 
         public Note Add(Note item)
         {
+            item.Id = Guid.NewGuid();
+            
             _notes.InsertOne(item);
             return item;
         }

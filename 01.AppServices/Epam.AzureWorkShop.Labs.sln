@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Epam.AzureWorkShop.Entities
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Epam.AzureWorkShop.Dal", "Epam.AzureWorkShop.Dal\Epam.AzureWorkShop.Dal.csproj", "{4BD79892-C2A7-417D-AAF7-8AEDB24C49C7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Epam.AzureWorkShop.Bll", "Epam.AzureWorkShop.Bll\Epam.AzureWorkShop.Bll.csproj", "{F43018E0-93EB-4CE8-A8A1-0378EBE08216}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{4BD79892-C2A7-417D-AAF7-8AEDB24C49C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4BD79892-C2A7-417D-AAF7-8AEDB24C49C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4BD79892-C2A7-417D-AAF7-8AEDB24C49C7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F43018E0-93EB-4CE8-A8A1-0378EBE08216}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F43018E0-93EB-4CE8-A8A1-0378EBE08216}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F43018E0-93EB-4CE8-A8A1-0378EBE08216}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F43018E0-93EB-4CE8-A8A1-0378EBE08216}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

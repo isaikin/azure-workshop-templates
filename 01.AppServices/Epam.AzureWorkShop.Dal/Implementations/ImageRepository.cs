@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.IO;
 using System.Linq;
 using Epam.AzureWorkShop.Dal.Interfaces;
 using Epam.AzureWorkShop.Entities;
@@ -26,7 +27,7 @@ namespace Epam.AzureWorkShop.Dal.Implementations
         { 
             item.Id = Guid.NewGuid();
             var cloudBlobContainer = _cloudBlobClient.GetContainerReference(_blobContainerName);
-            cloudBlobContainer.Create();
+            // cloudBlobContainer.Create();
  
             BlobContainerPermissions permissions = new BlobContainerPermissions
             {
@@ -76,7 +77,12 @@ namespace Epam.AzureWorkShop.Dal.Implementations
                 Id = id
             };
 
-            blob.DownloadToByteArray(image.Data, 0);
+            using (var ms = new MemoryStream())
+            {
+                blob.DownloadToStream(ms);
+                image.Data = ms.ToArray();
+            }
+            
             return image;
 
         }

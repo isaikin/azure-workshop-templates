@@ -2,11 +2,11 @@
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using Epam.AzureWorkShop.Bll.Implementations;
+using Epam.AzureWorkShop.Bll.Interfaces;
 using Epam.AzureWorkShop.Dal.Implementations;
 using Epam.AzureWorkShop.Dal.Interfaces;
 using Epam.AzureWorkShop.Entities;
-using Epam.AzureWorkShop.Labs.Models;
-using Epam.AzureWorkShop.Labs.Models.Interfaces;
 using Ninject;
 
 namespace Epam.AzureWorkShop.Labs
@@ -34,8 +34,8 @@ namespace Epam.AzureWorkShop.Labs
 			kernel.Bind<IRepository<Note>>().To<NotesRepository>().InSingletonScope();
 			kernel.Bind<IRepository<Image>>().To<ImageRepository>().InSingletonScope();
 			
-			kernel.Bind<IImageModels>().To<ImageModels>();
-			kernel.Bind<INoteModels>().To<NoteModels>();
+			kernel.Bind<IImageLogic>().To<ImageLogic>();
+			kernel.Bind<INoteLogic>().To<NoteLogic>();
 		}
 
 		protected override void OnApplicationStarted()
