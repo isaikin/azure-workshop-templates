@@ -38,8 +38,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Implementations\AppUserLogic.cs" />
     <Compile Include="Implementations\ImageLogic.cs" />
     <Compile Include="Implementations\NoteLogic.cs" />
+    <Compile Include="Interfaces\IAppUserLogic.cs" />
     <Compile Include="Interfaces\IImageLogic.cs" />
     <Compile Include="Interfaces\INoteLogic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
