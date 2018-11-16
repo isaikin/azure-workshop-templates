@@ -84,7 +84,6 @@ namespace Epam.AzureWorkShop.Dal.Implementations
             }
             
             return image;
-
         }
     }
 }

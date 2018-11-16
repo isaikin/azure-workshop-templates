@@ -15,5 +15,7 @@ namespace Epam.AzureWorkShop.Dal.Interfaces
 		ImageMetadata GetByNoteId(Guid id);
 
 		ImageMetadata GetByImageId(Guid id);
+
+		ImageMetadata Update(ImageMetadata item);
 	}
 }

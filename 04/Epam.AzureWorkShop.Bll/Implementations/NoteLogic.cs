@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Epam.AzureWorkShop.Bll.Interfaces;
+using Epam.AzureWorkShop.Dal.Implementations;
 using Epam.AzureWorkShop.Dal.Interfaces;
 using Epam.AzureWorkShop.Entities;
 
@@ -12,17 +13,20 @@ namespace Epam.AzureWorkShop.Bll.Implementations
 		private readonly IRepository<Note> _notesRepository;
 		private readonly IMetaDataRepository _metadataRepository;
 		private readonly ImageLogic _imageLogic;
-		
-		public NoteLogic(IRepository<Note> notesRepository, ImageLogic imageLogic, IMetaDataRepository metadataRepository)
+		private readonly IServiceBusQueue _serviceBusQueue;
+
+		public NoteLogic(IRepository<Note> notesRepository, ImageLogic imageLogic, IMetaDataRepository metadataRepository, IServiceBusQueue serviceBusQueue)
 		{
 			_notesRepository = notesRepository;
 			_imageLogic = imageLogic;
 			_metadataRepository = metadataRepository;
+			_serviceBusQueue = serviceBusQueue;
 		}
 
 		public Note Add(Note note, Image image)
 		{
 			var imageId = _imageLogic.Add(image).Id;
+			_serviceBusQueue.Add(imageId);
 
 			var currentNote = new Note()
 			{

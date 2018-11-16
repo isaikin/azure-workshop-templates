@@ -19,7 +19,21 @@ namespace Epam.AzureWorkShop.Dal.Implementations
             return item;
         }
 
-        public IEnumerable<ImageMetadata> GetAll()
+		public ImageMetadata Update(ImageMetadata item)
+		{
+			using (var context = new SqlContext())
+			{
+				var imageMetadata = context.Metadata.FirstOrDefault(u => u.ImageId == item.ImageId);
+
+				imageMetadata.ThumbnailId = item.ThumbnailId;
+
+				context.SaveChanges();
+			}
+
+			return item;
+		}
+
+		public IEnumerable<ImageMetadata> GetAll()
         {
             using (var context = new SqlContext())
             {

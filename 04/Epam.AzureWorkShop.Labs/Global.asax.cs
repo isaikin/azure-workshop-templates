@@ -34,9 +34,9 @@ namespace Epam.AzureWorkShop.Labs
 			kernel.Bind<IRepository<Note>>().To<NotesRepository>().InSingletonScope();
 			kernel.Bind<IRepository<Image>>().To<ImageRepository>().InSingletonScope(); 
 			kernel.Bind<IAppUserLogic>().To<AppUserLogic>();
-
-
 			kernel.Bind<IImageLogic>().To<ImageLogic>();
+			kernel.Bind<IServiceBusQueue>().To<ServiceBusQueue>();
+
 			kernel.Bind<INoteLogic>().To<NoteLogic>();
 		}
 
