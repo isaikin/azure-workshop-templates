@@ -1,0 +1,30 @@
+﻿@model Epam.AzureWorkShop.Entities.NoteViewItem
+
+@{
+    ViewBag.Title = "View";
+}
+
+<h2>Note Details</h2>
+
+<div>
+    <h4>NoteViewItem</h4>
+    <hr />
+	<dl class="dl-horizontal">
+		<dt>
+			@Html.DisplayNameFor(model => model.Text)
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.Text)
+		</dd>
+		<dt>
+			Image Full
+		</dt>
+		<dd>
+			<image src="@Url.Action("GetById", "Image", new {id = Model.ImageId })" height="300" width="300" />
+		</dd>
+	</dl>
+</div>
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>
