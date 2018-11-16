@@ -74,7 +74,7 @@ namespace Epam.AzureWorkShop.Labs.Controllers
 		[HttpPost]
 		[AllowAnonymous]
 		[ValidateAntiForgeryToken]
-		public async Task<ActionResult> Register(RegisterViewModel model)
+		public ActionResult Register(RegisterViewModel model)
 		{
 			if (ModelState.IsValid)
 			{
