@@ -33,7 +33,17 @@ namespace Epam.AzureWorkShop.Dal.Implementations
 			return item;
 		}
 
-		public IEnumerable<ImageMetadata> GetAll()
+	    public ImageMetadata GetByThumbnailId(Guid id)
+	    {
+	        using (var context = new SqlContext())
+	        {
+	            var imageMetadata = context.Metadata.FirstOrDefault(u => u.ThumbnailId == id);
+
+	            return imageMetadata;
+	        }
+        }
+
+	    public IEnumerable<ImageMetadata> GetAll()
         {
             using (var context = new SqlContext())
             {

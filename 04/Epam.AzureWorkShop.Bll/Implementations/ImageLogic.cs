@@ -60,5 +60,22 @@ namespace Epam.AzureWorkShop.Bll.Implementations
 
 			return item;
 		}
+
+	    public Image GetByGetThumbnailByIdId(Guid id)
+	    {
+	        if (id == Guid.Empty)
+	        {
+	            return null;
+	        }
+
+	        var item = _imageRepository.GetById(id);
+
+	        var metadata = _metadataRepository.GetByThumbnailId(id);
+	        item.MimeType = metadata.MimeType;
+	        item.FileName = metadata.FileName;
+
+
+	        return item;
+        }
 	}
 }

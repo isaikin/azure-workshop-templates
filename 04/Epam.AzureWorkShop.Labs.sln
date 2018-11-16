@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Epam.AzureWorkShop.Bll", "E
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageConverter", "ImageConverter\ImageConverter.csproj", "{F7FF9284-CAED-43CC-84D7-F9E3BAD8ED26}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageConverter(2)", "ImageConverter(2)\ImageConverter(2).csproj", "{2139EA48-910A-480C-BE61-E5FAFB305254}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{F7FF9284-CAED-43CC-84D7-F9E3BAD8ED26}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F7FF9284-CAED-43CC-84D7-F9E3BAD8ED26}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F7FF9284-CAED-43CC-84D7-F9E3BAD8ED26}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2139EA48-910A-480C-BE61-E5FAFB305254}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2139EA48-910A-480C-BE61-E5FAFB305254}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2139EA48-910A-480C-BE61-E5FAFB305254}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2139EA48-910A-480C-BE61-E5FAFB305254}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

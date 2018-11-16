@@ -21,9 +21,8 @@ namespace Epam.AzureWorkShop.Dal.Implementations
 
 		public void Add<T>(T value)
 		{
-			var json = Newtonsoft.Json.JsonConvert.SerializeObject(value);
-			var message = new Message(Encoding.UTF8.GetBytes(json));
-
+			var message = new Message();
+            message.UserProperties.Add("imageId", value);
 			queueClient.SendAsync(message).Wait();
 		}
 

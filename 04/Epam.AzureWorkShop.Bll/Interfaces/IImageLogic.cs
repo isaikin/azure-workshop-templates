@@ -10,5 +10,6 @@ namespace Epam.AzureWorkShop.Bll.Interfaces
 		void Delete(Guid id);
 		IEnumerable<Image> GetAll();
 		Image GetById(Guid id);
+	    Image GetByGetThumbnailByIdId(Guid id);
 	}
 }

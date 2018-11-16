@@ -60,7 +60,7 @@
 					<th scope="row">@(i++)</th>
 					<th>@note.Id</th>
 					<td>@note.Text</td>
-					<td><image src="@Url.Action("GetById", "Image", new {id = note.ThumbnailId })" height="100" width="100" /></td>
+					<td><image src="@Url.Action("GetThumbnailById", "Image", new {id = note.ThumbnailId })" height="100" width="100" /></td>
 					<td>@Html.ActionLink("Details", "GetById", new { id = note.Id }) </td>
 				</tr>
 			}

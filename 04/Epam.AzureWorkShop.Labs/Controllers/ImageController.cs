@@ -18,5 +18,11 @@ namespace Epam.AzureWorkShop.Labs.Controllers
 			var image = _imageLogic.GetById(id);
 			return image == null ? null : new FileContentResult(image.Data, image.MimeType);
 		}
-	}
+
+	    public ActionResult GetThumbnailById(Guid id)
+	    {
+	        var image = _imageLogic.GetByGetThumbnailByIdId(id);
+	        return image == null ? null : new FileContentResult(image.Data, image.MimeType);
+	    }
+    }
 }
