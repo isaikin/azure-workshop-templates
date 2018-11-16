@@ -2,27 +2,22 @@
 using System.Collections.Generic;
 using System.Configuration;
 using System.IO;
-using System.Linq;
 using System.Net.Http;
-using System.Runtime.Serialization;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml;
 using Epam.AzureWorkShop.Dal.Implementations;
 using Epam.AzureWorkShop.Dal.Interfaces;
 using Epam.AzureWorkShop.Entities;
-using Microsoft.Azure.ServiceBus;
 using Microsoft.Azure.WebJobs;
-using Microsoft.Azure.WebJobs.Host;
 using Microsoft.ServiceBus.Messaging;
 using SixLabors.ImageSharp.Formats.Png;
 using SixLabors.ImageSharp.Processing;
 using Image = SixLabors.ImageSharp.Image;
 
-namespace ConvectorImages
+namespace ImageConverter
 {
     public class Functions
     {
+        // This function will get triggered/executed when a new message is written 
+        // on an Azure Queue called queue.
         public static void ProcessQueueMessage([ServiceBusTrigger("thumbnails")] BrokeredMessage message, TextWriter log)
         {
             var imgOriginalId = (Guid)message.Properties["imageId"];

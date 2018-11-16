@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("ConvectorImages")]
+[assembly: AssemblyTitle("ImageConverter")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("EPAM Systems")]
-[assembly: AssemblyProduct("ConvectorImages")]
+[assembly: AssemblyProduct("ImageConverter")]
 [assembly: AssemblyCopyright("Copyright © EPAM Systems 2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("f7ff9284-caed-43cc-84d7-f9e3bad8ed26")]
+[assembly: Guid("94de8ea6-a8c6-4582-adb6-5bb97f6a3ec5")]
 
 // Version information for an assembly consists of the following four values:
 //
