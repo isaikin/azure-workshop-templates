@@ -1,12 +1,15 @@
 ﻿using Ninject.Web.Common.WebHost;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
-using Epam.AzureWorkShop.Bll.Implementations;
-using Epam.AzureWorkShop.Bll.Interfaces;
-using Epam.AzureWorkShop.Dal.Implementations;
-using Epam.AzureWorkShop.Dal.Interfaces;
 using Epam.AzureWorkShop.Entities;
+using Epam.AzureWorkShop.Labs.Models;
+using Epam.AzureWorkShop.Labs.Models.Interfaces;
+using Epam.AzureWorkShop.Labs.Models.Repositories;
 using Ninject;
 
 namespace Epam.AzureWorkShop.Labs
@@ -29,15 +32,10 @@ namespace Epam.AzureWorkShop.Labs
 
 		private void Registration(IKernel kernel)
 		{
-			kernel.Bind<IRepository<UserCredentials>>().To<UserRepository>().InSingletonScope();
-			kernel.Bind<IRepository<ImageMetadata>>().To<MetadataRepository>().InSingletonScope();
-			kernel.Bind<IRepository<Note>>().To<NotesRepository>().InSingletonScope();
-			kernel.Bind<IRepository<Image>>().To<ImageRepository>().InSingletonScope(); 
-			kernel.Bind<IAppUserLogic>().To<AppUserLogic>();
-
-
-			kernel.Bind<IImageLogic>().To<ImageLogic>();
-			kernel.Bind<INoteLogic>().To<NoteLogic>();
+			kernel.Bind<IRepository<Note>>().To<FakeRepository<Note>>().InSingletonScope();
+			kernel.Bind<IRepository<Image>>().To<FakeRepository<Image>>().InSingletonScope();
+			kernel.Bind<IImageModels>().To<ImageModels>();
+			kernel.Bind<INoteModels>().To<NoteModels>();
 		}
 
 		protected override void OnApplicationStarted()

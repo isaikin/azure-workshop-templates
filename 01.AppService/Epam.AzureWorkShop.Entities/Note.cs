@@ -6,12 +6,10 @@ using System.Threading.Tasks;
 
 namespace Epam.AzureWorkShop.Entities
 {
-	public class Image : BasicItem
+    public class Note : BasicItem
 	{
-		public byte[] Data { get; set; }
+	    public string Text { get; set; }
 
-		public string MimeType { get; set; }
-
-		public string FileName { get; set; }
-	}
+	    public Guid ImageId { get; set; }
+    }
 }

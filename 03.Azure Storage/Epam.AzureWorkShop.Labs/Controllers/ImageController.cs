@@ -1,30 +1,22 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
 using System.Web.Mvc;
-using Epam.AzureWorkShop.Labs.Models;
-using Epam.AzureWorkShop.Labs.Models.Interfaces;
+using Epam.AzureWorkShop.Bll.Interfaces;
 
 namespace Epam.AzureWorkShop.Labs.Controllers
 {
 	public class ImageController : Controller
 	{
-		private readonly IImageModels _imageModels;
+		private readonly IImageLogic _imageLogic;
 
-		public ImageController(IImageModels imageModels)
+		public ImageController(IImageLogic imageLogic)
 		{
-			_imageModels = imageModels;
+			_imageLogic = imageLogic;
 		}
 
 		public ActionResult GetById(Guid id)
 		{
-			var image = _imageModels.GetById(id);
-
-			Response.StatusCode = (int)HttpStatusCode.NotFound;
-			return image == null
-				? null
-				: new FileContentResult(image.Data, image.MimeType);
+			var image = _imageLogic.GetById(id);
+			return image == null ? null : new FileContentResult(image.Data, image.MimeType);
 		}
 	}
 }
